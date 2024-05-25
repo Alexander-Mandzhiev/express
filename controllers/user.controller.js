@@ -12,12 +12,17 @@ class UserController {
     res.json(newUser.rows[0]);
   }
   async getAll(req, res) {
-    const users = await db.query(`SELECT * FROM users ORDER BY id DESC`);
+    const users = await db.query(
+      `SELECT id, first_name, last_name, age, email FROM users  ORDER BY id DESC `
+    );
     res.json(users.rows);
   }
   async getOne(req, res) {
     const { id } = req.params;
-    const user = await db.query(`SELECT * FROM users WHERE id=$1`, [id]);
+    const user = await db.query(
+      `SELECT id, first_name, last_name, age, email FROM users WHERE id=$1`,
+      [id]
+    );
     res.json(user.rows);
   }
   async updateUser(req, res) {
