@@ -1,5 +1,5 @@
-import db from "../db.js";
 import userServise from "../services/user.servise.js";
+
 class UserController {
   async create(req, res) {
     try {
